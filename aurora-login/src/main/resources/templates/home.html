@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área logada - Aurora Login</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <div class="aurora-background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="auth-card home-card">
+        <div class="brand">
+            <div class="brand-logo">🔐</div>
+            <div class="brand-name">Aurora</div>
+        </div>
+        <h1>Login realizado com sucesso!</h1>
+
+        <div class="badge-user">
+            👋 <span sec:authentication="name">usuario</span>
+        </div>
+
+        <p>
+            Esta é uma área protegida: só é possível chegar até aqui com uma
+            sessão autenticada. Ela existe apenas para demonstrar que o
+            Spring Security está bloqueando o acesso de quem não fez login.
+        </p>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn-logout" style="border:none; cursor:pointer; font-family:inherit; font-size:14px;">
+                Sair
+            </button>
+        </form>
+    </main>
+
+</body>
+</html>
