@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f4f7;
+    color: #222;
+    line-height: 1.4;
+}
+
+.topo {
+    background: #1d3c78;
+    color: #fff;
+    padding: 16px 24px;
+}
+
+.topo h1 {
+    font-size: 1.4rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 180px;
+}
+
+.campo label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.filtros input,
+.filtros select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.botoes {
+    display: flex;
+    gap: 8px;
+}
+
+.filtros button,
+.limpar {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.filtros button {
+    background: #1d3c78;
+    color: #fff;
+    border: none;
+}
+
+.filtros button:hover {
+    background: #16305f;
+}
+
+.limpar {
+    background: #e0e0e0;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.limpar:hover {
+    background: #d0d0d0;
+}
+
+.resultado-info {
+    margin-bottom: 12px;
+    color: #555;
+}
+
+.sem-resultado {
+    padding: 16px;
+    background: #fff3cd;
+    border: 1px solid #ffe08a;
+    border-radius: 6px;
+    color: #7a5b00;
+    margin-bottom: 12px;
+}
+
+.grade-candidatos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.foto-candidato {
+    width: 100%;
+    aspect-ratio: 161 / 225;
+    object-fit: cover;
+    display: block;
+    background: #ddd;
+}
+
+.info {
+    padding: 8px 10px 12px;
+}
+
+.nome {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.numero {
+    font-weight: bold;
+    color: #1d3c78;
+}
+
+.cargo,
+.partido {
+    font-size: 0.9rem;
+}
+
+.situacao {
+    font-size: 0.8rem;
+    margin-top: 4px;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.extra {
+    font-size: 0.8rem;
+    color: #666;
+}
