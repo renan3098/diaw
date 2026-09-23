@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Consulta de Candidatos TSE</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="topo">
+    <h1>Consulta de Candidatos TSE</h1>
+</header>
+
+<main class="container">
+
+    <form method="get" th:action="@{/}" class="filtros">
+
+        <div class="campo">
+            <label for="texto">Nome / número</label>
+            <input type="text" id="texto" name="texto" placeholder="Buscar candidato..." th:value="${textoSelecionado}">
+        </div>
+
+        <div class="campo">
+            <label for="cargo">Cargo</label>
+            <select id="cargo" name="cargo">
+                <option value="" th:selected="${cargoSelecionado == ''}">Todos</option>
+                <option th:each="c : ${cargos}"
+                        th:value="${c}"
+                        th:text="${c}"
+                        th:selected="${c == cargoSelecionado}"></option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label for="partido">Partido</label>
+            <select id="partido" name="partido">
+                <option value="" th:selected="${partidoSelecionado == ''}">Todos</option>
+                <option th:each="p : ${partidos}"
+                        th:value="${p}"
+                        th:text="${p}"
+                        th:selected="${p == partidoSelecionado}"></option>
+            </select>
+        </div>
+
+        <div class="botoes">
+            <button type="submit">Filtrar</button>
+            <a th:href="@{/}" class="limpar">Limpar</a>
+        </div>
+    </form>
+
+    <p class="resultado-info">
+        <span th:text="${totalEncontrado}">0</span> candidato(s) encontrado(s).
+    </p>
+
+    <p th:if="${totalEncontrado == 0}" class="sem-resultado">
+        Nenhum candidato encontrado com esses filtros.
+    </p>
+
+    <div class="grade-candidatos">
+        <div class="card" th:each="cand : ${candidatos}">
+
+            <img th:src="@{'/images/candidatos/' + ${cand.nomeArquivoFoto}}"
+                 th:alt="${cand.nomeUrna}"
+                 class="foto-candidato">
+
+            <div class="info">
+                <h2 class="nome" th:text="${cand.nomeUrna}">Nome de urna</h2>
+                <p class="numero" th:text="${cand.numeroUrna}">00</p>
+                <p class="cargo" th:text="${cand.cargo}">Cargo</p>
+                <p class="partido" th:text="${cand.siglaPartido}">Partido</p>
+
+                <p class="situacao" th:if="${cand.situacaoCandidatura != null and !cand.situacaoCandidatura.isBlank()}"
+                   th:text="${cand.situacaoCandidatura}">Situação</p>
+
+                <p class="extra" th:if="${cand.idade > 0}">
+                    <span th:text="${cand.idade + ' anos'}">idade</span>
+                </p>
+
+                <p class="extra" th:if="${cand.ocupacao != null and !cand.ocupacao.isBlank()}"
+                   th:text="${cand.ocupacao}">Ocupação</p>
+
+                <p class="extra" th:if="${cand.grauInstrucao != null and !cand.grauInstrucao.isBlank()}"
+                   th:text="${cand.grauInstrucao}">Escolaridade</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>
